@@ -1,0 +1,15 @@
+Us=[0.4,0.5,0.6];
+Uk=0.4;
+g=9.81;
+at = 1.5;
+angle=[0:0.000001:90];
+m=70;
+
+f=(m*g*sin(angle*pi/180))-(m*at);
+fk=(Uk*g*m*cos(angle*pi/180))-((Uk*m*30*(angle*pi/180))/10);
+Fsmax=(Us(1)*m*g*cos(angle*pi/180))-((Us(1)*m*30*(angle*pi/180))/10);
+x=find(abs(Fsmax-f)<=0.0001);
+fdomel(1:x(2))=Fsmax(1:x(2));
+fdomel(x(2)+1:900001)=fk(x(2)+1:900001);
+plo()
+
